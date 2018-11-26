@@ -24,6 +24,6 @@ RUN apk add --no-cache \
     tar vzxf circleci-cli_${CIRCLECI_VERSION}_linux_amd64.tar.gz --strip 1 --directory ${CIRCLECI_DESTDIR} && \
     rm -f circleci-cli_${CIRCLECI_VERSION}_linux_amd64.tar.gz && rm -f circleci-cli_${CIRCLECI_SHA256SUM}_SHA256SUMS
 
-RUN pip install invoke==${INVOKE_VERSION} pytest==${PYTEST_VERSION}
+RUN pip install pytest==${PYTEST_VERSION} invoke==${INVOKE_VERSION}
 
 HEALTHCHECK NONE
