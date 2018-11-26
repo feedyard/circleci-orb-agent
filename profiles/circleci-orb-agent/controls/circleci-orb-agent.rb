@@ -13,7 +13,7 @@ control 'curl version' do
   title 'confirm curl version installed'
   desc 'confirm version reported by curl matches the desired version'
   describe command('curl -V') do
-    its('stdout') { should include ('1.7') }
+    its('stdout') { should include ('7.6') }
   end
 end
 
@@ -21,8 +21,8 @@ control 'python version' do
   impact 1.0
   title 'confirm python version installed'
   desc 'confirm version reported by python matches the desired version'
-  describe command('python -V') do
-    its('stdout') { should include ('3.7') }
+  describe command('python3 -V') do
+    its('stdout') { should include ('3.6') }
   end
 end
 
