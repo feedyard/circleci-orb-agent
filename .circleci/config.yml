@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  docker-agents: feedyard/docker-agents@dev:0.0.7-rc1
+  docker-agents: feedyard/docker-agents@dev:0.0.8-rc1
 
 workflows:
   circleci-orb-agent-image-pipeline:
