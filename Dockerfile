@@ -29,5 +29,6 @@ RUN apk add --no-cache \
     rm -r /root/.cache
 
 RUN pip3 install invoke==${INVOKE_VERSION} pytest==${PYTEST_VERSION}
+RUN pip3 install invoke==${INVOKE_VERSION} pytest==${PYTEST_VERSION}
 
 HEALTHCHECK NONE
