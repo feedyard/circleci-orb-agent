@@ -1,63 +1,63 @@
-version: 2.1
-
-orbs:
-  docker-agents: feedyard/docker-agents@dev:0.0.8-rc1
-
-workflows:
-  circleci-orb-agent-image-pipeline:
-    jobs:
-      - docker-agents/publish:
-          filters:
-            branches:
-              only: master
-            tags:
-              ignore: /.*/
-      - docker-agents/release:
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only: /.*/
-
-
 #version: 2.1
 #
-#jobs:
-#  build:
-#    working_directory: ~/circleci-orb-agent
-#    environment:
-#      LIBRARY: quay.io/feedyard
-#      CONTAINER_NAME: circleci-orb-agent
-#      VERSION: 3.8
-#      BASH_ENV: local.env
-#    docker:
-#    - image: quay.io/feedyard/circleci-base-agent
-#    steps:
-#    - checkout
-#    - setup_remote_docker
-#    - run:
-#        name: confirm Docker
-#        command: docker info
-#    - run:
-#        name: decrypt secrets
-#        command: invoke dec
-#    - run:
-#        name: build image
-#        command: docker build -t $LIBRARY/$CONTAINER_NAME:latest .
-#    - run:
-#        name: tag with build version
-#        command: docker tag $LIBRARY/$CONTAINER_NAME:latest $LIBRARY/$CONTAINER_NAME:$VERSION.$CIRCLE_BUILD_NUM
-#    - run:
-#        name: configuration tests
-#        command: |
-#          set -euo pipefail
-#          CID="$(docker run -it -d --entrypoint ash $LIBRARY/$CONTAINER_NAME:latest)"
-#          inspec exec --no-distinct-exit profiles/cis-docker
-#          inspec exec profiles/$CONTAINER_NAME/ -t docker://$CID
-#          docker rm -f $CID
-#    - deploy:
-#        name: deploy to quay.io
-#        command: |
-#          docker login -u $DOCKER_LOGIN -p $DOCKER_PASSWORD quay.io
-#          docker push $LIBRARY/$CONTAINER_NAME:$VERSION.$CIRCLE_BUILD_NUM
-#          docker push $LIBRARY/$CONTAINER_NAME:latest
+#orbs:
+#  docker-agents: feedyard/docker-agents@dev:0.0.8-rc1
+#
+#workflows:
+#  circleci-orb-agent-image-pipeline:
+#    jobs:
+#      - docker-agents/publish:
+#          filters:
+#            branches:
+#              only: master
+#            tags:
+#              ignore: /.*/
+#      - docker-agents/release:
+#          filters:
+#            branches:
+#              ignore: /.*/
+#            tags:
+#              only: /.*/
+
+
+version: 2.1
+
+jobs:
+  build:
+    working_directory: ~/circleci-orb-agent
+    environment:
+      LIBRARY: quay.io/feedyard
+      CONTAINER_NAME: circleci-orb-agent
+      VERSION: 3.8
+      BASH_ENV: local.env
+    docker:
+    - image: quay.io/feedyard/circleci-base-agent
+    steps:
+    - checkout
+    - setup_remote_docker
+    - run:
+        name: confirm Docker
+        command: docker info
+    - run:
+        name: decrypt secrets
+        command: invoke dec
+    - run:
+        name: build image
+        command: docker build -t $LIBRARY/$CONTAINER_NAME:latest .
+    - run:
+        name: tag with build version
+        command: docker tag $LIBRARY/$CONTAINER_NAME:latest $LIBRARY/$CONTAINER_NAME:$VERSION.$CIRCLE_BUILD_NUM
+    - run:
+        name: configuration tests
+        command: |
+          set -euo pipefail
+          CID="$(docker run -it -d --entrypoint ash $LIBRARY/$CONTAINER_NAME:latest)"
+          inspec exec --no-distinct-exit profiles/cis-docker
+          inspec exec profiles/$CONTAINER_NAME/ -t docker://$CID
+          docker rm -f $CID
+    - deploy:
+        name: deploy to quay.io
+        command: |
+          docker login -u $DOCKER_LOGIN -p $DOCKER_PASSWORD quay.io
+          docker push $LIBRARY/$CONTAINER_NAME:$VERSION.$CIRCLE_BUILD_NUM
+          docker push $LIBRARY/$CONTAINER_NAME:latest
