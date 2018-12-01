@@ -10,9 +10,6 @@ ENV INVOKE_VERSION=1.2.0
 ENV PYTEST_VERSION=4.0.1
 
 RUN apk add --no-cache \
-    bash \
-    bash-doc \
-    bash-completion \
     curl && \
     curl -L https://github.com/CircleCI-Public/circleci-cli/releases/download/v${CIRCLECI_VERSION}/circleci-cli_${CIRCLECI_VERSION}_linux_amd64.tar.gz --output circleci-cli_${CIRCLECI_VERSION}_linux_amd64.tar.gz && \
     echo "${CIRCLECI_SHA256SUM}  circleci-cli_${CIRCLECI_VERSION}_linux_amd64.tar.gz" > circleci-cli_${CIRCLECI_SHA256SUM}_SHA256SUMS && \
@@ -28,7 +25,6 @@ RUN apk add --no-cache \
     if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi && \
     rm -r /root/.cache
 
-RUN pip3 install invoke==${INVOKE_VERSION} pytest==${PYTEST_VERSION}
 RUN pip3 install invoke==${INVOKE_VERSION} pytest==${PYTEST_VERSION}
 
 HEALTHCHECK NONE

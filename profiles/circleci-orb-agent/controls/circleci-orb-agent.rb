@@ -45,20 +45,20 @@ control 'invoke version' do
   end
 end
 
-control 'pytest version' do
-  impact 1.0
-  title 'confirm pytest version installed'
-  desc 'confirm version reported by pytest matches the desired version'
-  describe command('pytest --version') do
-    its('stdout') { should include ('4.0') }
-  end
-end
+# control 'pytest version' do
+#   impact 1.0
+#   title 'confirm pytest version installed'
+#   desc 'confirm version reported by pytest matches the desired version'
+#   describe command('pytest --version') do
+#     its('stdout') { should include ('4.0') }
+#   end
+# end
 
 control 'circleci-cli version' do
   impact 1.0
   title 'confirm circleci-cli version installed'
   desc 'confirm version reported by circleci-cli matches the desired version'
   describe command('circleci version') do
-    its('stdout') { should include ('0.1.4180') }
+    its('stdout') { should include ('0.1.4280') }
   end
 end
