@@ -69,6 +69,6 @@ control 'circleci-cli version' do
   title 'confirm circleci-cli version installed'
   desc 'confirm version reported by circleci-cli matches the desired version'
   describe command('circleci version') do
-    its('stdout') { should include ('0.1.4280') }
+    its('stdout') { should include ('0.1.42') }
   end
 end
