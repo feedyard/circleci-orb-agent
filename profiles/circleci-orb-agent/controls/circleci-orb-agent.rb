@@ -54,6 +54,16 @@ end
 #   end
 # end
 
+control 'yamllint version' do
+  impact 1.0
+  title 'confirm yamllint version installed'
+  desc 'confirm version reported by yamllint matches the desired version'
+  describe command('yamllint -v') do
+    its('stdout') { should include ('1.13') }
+  end
+end
+
+
 control 'circleci-cli version' do
   impact 1.0
   title 'confirm circleci-cli version installed'

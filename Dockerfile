@@ -8,6 +8,7 @@ ENV CIRCLECI_DESTDIR=/usr/local/bin
 
 ENV INVOKE_VERSION=1.2.0
 ENV PYTEST_VERSION=4.0.1
+ENV YAMLLIST_VERSION=1.13.0
 
 RUN apk add --no-cache \
     curl && \
@@ -25,6 +26,6 @@ RUN apk add --no-cache \
     if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi && \
     rm -r /root/.cache
 
-RUN pip3 install invoke==${INVOKE_VERSION} pytest==${PYTEST_VERSION}
+RUN pip3 install invoke==${INVOKE_VERSION} pytest==${PYTEST_VERSION} yamllint==${YAMLLINT_VERSION}
 
 HEALTHCHECK NONE
