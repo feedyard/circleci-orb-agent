@@ -5,6 +5,7 @@ control 'packages' do
   describe command('apk info') do
     its('stdout') { should include ('curl') }
     its('stdout') { should include ('python3') }
+    its('stdout') { should include ('jq') }
   end
 end
 
@@ -23,6 +24,15 @@ control 'python version' do
   desc 'confirm version reported by python matches the desired version'
   describe command('python3 -V') do
     its('stdout') { should include ('3.6') }
+  end
+end
+
+control 'jq version' do
+  impact 1.0
+  title 'confirm jq version installed'
+  desc 'confirm version reported by jq matches the desired version'
+  describe command('jq --version') do
+    its('stdout') { should include ('v3.7') }
   end
 end
 
