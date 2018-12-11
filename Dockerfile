@@ -2,16 +2,14 @@ FROM quay.io/feedyard/circleci-remote-docker:4.2.0
 
 LABEL maintainer=<nic.cheneweth@thoughtworks.com>
 
-ENV CIRCLECI_VERSION=0.1.4308
-ENV CIRCLECI_SHA256SUM=f5cb7417e0862fddde170fc2db937cb429f42b2607bc285b31f1337dff01c6cd
+ENV CIRCLECI_VERSION=0.1.4427
+ENV CIRCLECI_SHA256SUM=14cac1c61de87b420699c1f7d7dcd5300d6a349ae3fc363f9e109c5ba565a6a8
 ENV CIRCLECI_DESTDIR=/usr/local/bin
 
 ENV INVOKE_VERSION=1.2.0
-ENV PYTEST_VERSION=4.0.1
 ENV YAMLLINT_VERSION=1.13.0
 
 RUN apk add --no-cache \
-    jq \
     curl && \
     curl -L https://github.com/CircleCI-Public/circleci-cli/releases/download/v${CIRCLECI_VERSION}/circleci-cli_${CIRCLECI_VERSION}_linux_amd64.tar.gz --output circleci-cli_${CIRCLECI_VERSION}_linux_amd64.tar.gz && \
     echo "${CIRCLECI_SHA256SUM}  circleci-cli_${CIRCLECI_VERSION}_linux_amd64.tar.gz" > circleci-cli_${CIRCLECI_SHA256SUM}_SHA256SUMS && \
@@ -27,6 +25,6 @@ RUN apk add --no-cache \
     if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi && \
     rm -r /root/.cache
 
-RUN pip3 install invoke==${INVOKE_VERSION} pytest==${PYTEST_VERSION} yamllint==${YAMLLINT_VERSION}
+RUN pip3 install invoke==${INVOKE_VERSION} yamllint==${YAMLLINT_VERSION}
 
 HEALTHCHECK NONE

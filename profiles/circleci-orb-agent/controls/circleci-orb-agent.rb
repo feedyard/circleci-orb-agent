@@ -5,7 +5,6 @@ control 'packages' do
   describe command('apk info') do
     its('stdout') { should include ('curl') }
     its('stdout') { should include ('python3') }
-    its('stdout') { should include ('jq') }
   end
 end
 
@@ -27,22 +26,13 @@ control 'python version' do
   end
 end
 
-control 'jq version' do
-  impact 1.0
-  title 'confirm jq version installed'
-  desc 'confirm version reported by jq matches the desired version'
-  describe command('jq --version') do
-    its('stdout') { should include ('v3.7') }
-  end
-end
-
 control 'python packages' do
   impact 1.0
   title 'confirm python package installation'
   desc 'confirm all desired python packages are installed'
   describe command('pip list') do
     its('stdout') { should include ('invoke') }
-    its('stdout') { should include ('pytest') }
+    its('stdout') { should include ('yamllint') }
   end
 end
 
@@ -55,15 +45,6 @@ control 'invoke version' do
   end
 end
 
-# control 'pytest version' do
-#   impact 1.0
-#   title 'confirm pytest version installed'
-#   desc 'confirm version reported by pytest matches the desired version'
-#   describe command('pytest --version') do
-#     its('stdout') { should include ('4.0') }
-#   end
-# end
-
 control 'yamllint version' do
   impact 1.0
   title 'confirm yamllint version installed'
@@ -72,7 +53,6 @@ control 'yamllint version' do
     its('stdout') { should include ('1.13') }
   end
 end
-
 
 control 'circleci-cli version' do
   impact 1.0
