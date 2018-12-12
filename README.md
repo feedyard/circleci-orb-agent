@@ -1,3 +1,3 @@
 # feedyard/circleci-orb-agent
 
-Circleci-cli and unit testing tools for publishing orbs
+Circleci-cli and tools for publishing orbs
