@@ -1,0 +1,25 @@
+---
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.1.0
+    hooks:
+      - id: check-merge-conflict
+      - id: trailing-whitespace
+      - id: check-yaml
+      - id: check-added-large-files
+      - id: forbid-new-submodules
+  - repo: local
+    hooks:
+      - id: git-secrets
+        name: git-secrets
+        entry: git-secrets
+        language: system
+        args: ["--scan"]
+  - repo: local
+    hooks:
+      - id: hadolint
+        name: hadolint
+        entry: hadolint
+        language: system
+        files: ^Dockerfile
+        exclude: ^Dockerfile.unpinned

@@ -13,7 +13,7 @@ control 'curl version' do
   title 'confirm curl version installed'
   desc 'confirm version reported by curl matches the desired version'
   describe command('curl -V') do
-    its('stdout') { should include ('7.6') }
+    its('stdout') { should include ('7.64') }
   end
 end
 
@@ -50,7 +50,7 @@ control 'yamllint version' do
   title 'confirm yamllint version installed'
   desc 'confirm version reported by yamllint matches the desired version'
   describe command('yamllint -v') do
-    its('stdout') { should include ('1.13') }
+    its('stdout') { should include ('1.15') }
   end
 end
 
@@ -59,6 +59,6 @@ control 'circleci-cli version' do
   title 'confirm circleci-cli version installed'
   desc 'confirm version reported by circleci-cli matches the desired version'
   describe command('circleci version') do
-    its('stdout') { should include ('0.1.4') }
+    its('stdout') { should include ('0.1.5') }
   end
 end

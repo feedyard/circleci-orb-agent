@@ -2,18 +2,35 @@
 version: 2.1
 
 orbs:
-  circle-agent: feedyard/circleci-agent-publish@0.1.0
+  circle-agent: feedyard/circleci-agent-publish@dev:latest
 
 workflows:
-  circleci-orb-agent-image-pipeline:
+  circleci-orb-agent-pipeline:
     jobs:
       - circle-agent/dev-release:
+          context: ci
+          registry: quay.io
+          after_checkout:
+            - run:
+                name: Lint Dockerfile
+                command: hadolint Dockerfile
+          after_build:
+            - run:
+                name: configuration testing of the image
+                command: |
+                  set -euo pipefail
+                  inspec exec --no-distinct-exit profiles/cis-docker
+                  CID="$(docker run -it -d --entrypoint ash quay.io/feedyard/circleci-orb-agent:$CIRCLE_SHA1)"
+                  inspec exec profiles/circleci-orb-agent/ -t docker://$CID
+                  docker rm -f $CID
           filters:
             branches:
               only: master
             tags:
               ignore: /.*/
       - circle-agent/publish:
+          context: ci
+          registry: quay.io
           filters:
             branches:
               ignore: /.*/
