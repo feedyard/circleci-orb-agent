@@ -1,3 +1,5 @@
+.*
 README.md
-*.env
-.gitignore
+tasks.py
+requirements.txt
+testlocal.sh
