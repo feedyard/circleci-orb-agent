@@ -10,7 +10,7 @@ ENV YAMLLINT_VERSION=1.15.0
 
 RUN apk add --no-cache \
     python3=3.6.8-r2 \
-    curl=7.64.0-r1 && \
+    curl=7.64.0-r2 && \
     curl -L https://github.com/CircleCI-Public/circleci-cli/releases/download/v${CIRCLECI_VERSION}/circleci-cli_${CIRCLECI_VERSION}_linux_amd64.tar.gz --output circleci-cli_${CIRCLECI_VERSION}_linux_amd64.tar.gz && \
     echo "${CIRCLECI_SHA256SUM}  circleci-cli_${CIRCLECI_VERSION}_linux_amd64.tar.gz" > circleci-cli_${CIRCLECI_SHA256SUM}_SHA256SUMS && \
     sha256sum -cs circleci-cli_${CIRCLECI_SHA256SUM}_SHA256SUMS && \
