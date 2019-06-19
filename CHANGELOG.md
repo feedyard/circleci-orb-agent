@@ -14,3 +14,8 @@ FROM quay.io/feedyard/circleci-remote-docker:5.1.0
 CIRCLECI_VERSION=0.1.5652
 INVOKE_VERSION=1.2.0
 YAMLLINT_VERSION=1.15.0
+
+### 06-19-2019 release version 4.4.0
+
+feedyard/circleci-remote-docker:5.2.0
+YAMLLINT_VERSION=1.16.0

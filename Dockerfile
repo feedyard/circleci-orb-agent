@@ -1,4 +1,4 @@
-FROM quay.io/feedyard/circleci-remote-docker:5.1.0
+FROM quay.io/feedyard/circleci-remote-docker:5.2.0
 
 LABEL maintainer=<nic.cheneweth@thoughtworks.com>
 
@@ -6,7 +6,7 @@ ENV CIRCLECI_VERSION=0.1.5652
 ENV CIRCLECI_SHA256SUM=a313b8eb0624d96c09492c3505f741c223b0b068a69dc7a15344ff5eeeb18677
 
 ENV INVOKE_VERSION=1.2.0
-ENV YAMLLINT_VERSION=1.15.0
+ENV YAMLLINT_VERSION=1.16.0
 
 RUN apk add --no-cache \
     python3=3.6.8-r2 \

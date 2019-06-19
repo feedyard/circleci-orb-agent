@@ -50,7 +50,7 @@ control 'yamllint version' do
   title 'confirm yamllint version installed'
   desc 'confirm version reported by yamllint matches the desired version'
   describe command('yamllint -v') do
-    its('stdout') { should include ('1.15') }
+    its('stdout') { should include ('1.16') }
   end
 end
 
