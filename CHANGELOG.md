@@ -19,3 +19,5 @@ YAMLLINT_VERSION=1.15.0
 
 feedyard/circleci-remote-docker:5.2.0
 YAMLLINT_VERSION=1.16.0
+
+### 07-17-2019 release version

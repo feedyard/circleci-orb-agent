@@ -1,16 +1,16 @@
-FROM quay.io/feedyard/circleci-remote-docker:5.2.0
+FROM quay.io/feedyard/circleci-remote-docker:5.3.0
 
 LABEL maintainer=<nic.cheneweth@thoughtworks.com>
 
-ENV CIRCLECI_VERSION=0.1.5652
-ENV CIRCLECI_SHA256SUM=a313b8eb0624d96c09492c3505f741c223b0b068a69dc7a15344ff5eeeb18677
+ENV CIRCLECI_VERSION=0.1.5725
+ENV CIRCLECI_SHA256SUM=6a31e6fa8ceb36e5dfb2e5359792c0f472e64a975670c8d74bdfd134d1efd6c2
 
 ENV INVOKE_VERSION=1.2.0
 ENV YAMLLINT_VERSION=1.16.0
 
 RUN apk add --no-cache \
-    python3=3.6.8-r2 \
-    curl=7.64.0-r2 && \
+    python3=3.7.3-r0 \
+    curl=7.65.1-r0 && \
     curl -L https://github.com/CircleCI-Public/circleci-cli/releases/download/v${CIRCLECI_VERSION}/circleci-cli_${CIRCLECI_VERSION}_linux_amd64.tar.gz --output circleci-cli_${CIRCLECI_VERSION}_linux_amd64.tar.gz && \
     echo "${CIRCLECI_SHA256SUM}  circleci-cli_${CIRCLECI_VERSION}_linux_amd64.tar.gz" > circleci-cli_${CIRCLECI_SHA256SUM}_SHA256SUMS && \
     sha256sum -cs circleci-cli_${CIRCLECI_SHA256SUM}_SHA256SUMS && \
