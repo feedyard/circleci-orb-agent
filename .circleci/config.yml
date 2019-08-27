@@ -2,7 +2,7 @@
 version: 2.1
 
 orbs:
-  executor-tools: feedyard/executor-tools@0.2.0
+  executor-tools: feedyard/executor-tools@0.3.0
   common: feedyard/common-pipeline-tasks@0.6.0
 
 workflows:
