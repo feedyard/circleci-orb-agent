@@ -31,6 +31,7 @@ control 'python packages' do
   title 'confirm python package installation'
   desc 'confirm all desired python packages are installed'
   describe command('pip list') do
+    its('stdout') { should include ('setuptools') }
     its('stdout') { should include ('invoke') }
     its('stdout') { should include ('yamllint') }
   end
@@ -41,7 +42,7 @@ control 'invoke version' do
   title 'confirm invoke version installed'
   desc 'confirm version reported by invoke matches the desired version'
   describe command('invoke -V') do
-    its('stdout') { should include ('1.2') }
+    its('stdout') { should include ('1.3') }
   end
 end
 
@@ -50,7 +51,7 @@ control 'yamllint version' do
   title 'confirm yamllint version installed'
   desc 'confirm version reported by yamllint matches the desired version'
   describe command('yamllint -v') do
-    its('stdout') { should include ('1.16') }
+    its('stdout') { should include ('1.17') }
   end
 end
 

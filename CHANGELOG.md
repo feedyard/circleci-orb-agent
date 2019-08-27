@@ -20,4 +20,19 @@ YAMLLINT_VERSION=1.15.0
 feedyard/circleci-remote-docker:5.2.0
 YAMLLINT_VERSION=1.16.0
 
-### 07-17-2019 release version
+### 07-17-2019 release version 4.5.0
+
+feedyard/circleci-remote-docker:5.3.0
+
+### 08-26-2019 release version 4.6.0
+
+feedyard/circleci-remote-docker:5.3.1
+
+(1/8) Installing curl (7.65.1-r0)
+(2/8) Installing libbz2 (1.0.6-r7)
+(6/8) Installing readline (8.0.0-r0)
+(8/8) Installing python3 (3.7.3-r0)
+Successfully installed pip-19.2.3
+Successfully installed setuptools-41.2.0
+Successfully installed invoke-1.3.0
+Successfully installed yamllint-1.17.0
